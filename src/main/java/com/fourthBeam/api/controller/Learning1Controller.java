@@ -2,6 +2,7 @@ package com.fourthBeam.api.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.fourthBeam.annotation.Passed;
 import com.fourthBeam.api.DTO.LearningRequestDTO;
 import com.fourthBeam.api.service.LearningService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class Learning1Controller {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Passed()
+    private Logger logger;
 
     private final LearningService lerningService;
     @GetMapping("/hello")

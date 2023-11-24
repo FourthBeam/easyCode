@@ -1,4 +1,4 @@
-package com.fourthBeam.testBeanProcessor;
+package com.fourthBeam.beanProcessor;
 
 public class CustomBeanPostProcessor {
 }
