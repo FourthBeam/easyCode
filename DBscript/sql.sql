@@ -6,3 +6,16 @@ CREATE TABLE employees (
     last_name VARCHAR(50),
     age INT
 );
+
+
+INSERT INTO myDb.employees
+( first_name, last_name, age)
+VALUES( 'firstname1', 'lastname1', 1);
+
+INSERT INTO myDb.employees
+( first_name, last_name, age)
+VALUES( 'firstname2', 'lastname2', 2);
+
+INSERT INTO myDb.employees
+( first_name, last_name, age)
+VALUES( '首名3', '首名3', 3);
