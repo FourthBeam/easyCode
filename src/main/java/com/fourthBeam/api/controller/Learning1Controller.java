@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.List;
 public class Learning1Controller {
 
     private final EmployeesMapper employeesMapper;
+
+    private final StringRedisTemplate stringRedisTemplate;
 
     @Passed()
     private Logger logger;
@@ -40,6 +43,20 @@ public class Learning1Controller {
         list.forEach(l->logger.info(String.valueOf(l)));
 
         return learningRequestDTO;
+    }
+
+    @PostMapping("/testRedis")
+    public String testRedis(@RequestBody LearningRequestDTO learningRequestDTO){
+        writeToRedis(learningRequestDTO.getParam1(),learningRequestDTO.getParam2());
+        return readFromRedis(learningRequestDTO.getParam1());
+    }
+
+    public void writeToRedis(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
+    }
+
+    public String readFromRedis(String key) {
+        return stringRedisTemplate.opsForValue().get(key);
     }
 
 }
