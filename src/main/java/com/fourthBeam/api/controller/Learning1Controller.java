@@ -2,6 +2,7 @@ package com.fourthBeam.api.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.fourthBeam.annotation.EnhanceResponse;
 import com.fourthBeam.annotation.Passed;
 import com.fourthBeam.api.BO.Employees;
 import com.fourthBeam.api.DTO.LearningRequestDTO;
@@ -49,6 +50,13 @@ public class Learning1Controller {
     public String testRedis(@RequestBody LearningRequestDTO learningRequestDTO){
         writeToRedis(learningRequestDTO.getParam1(),learningRequestDTO.getParam2());
         return readFromRedis(learningRequestDTO.getParam1());
+    }
+
+    @PostMapping("/testEnhanceResponse")
+    @EnhanceResponse
+    public LearningRequestDTO testEnhanceResponse(@RequestBody LearningRequestDTO learningRequestDTO){
+        logger.info(String.valueOf(learningRequestDTO));
+        return learningRequestDTO;
     }
 
     public void writeToRedis(String key, String value) {
