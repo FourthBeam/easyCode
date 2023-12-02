@@ -1,6 +1,5 @@
 package com.fourthBeam.annotation;
 
-import com.fourthBeam.annotation.processor.BO.ERRegexRule;
 import com.fourthBeam.annotation.processor.enmus.EnhanceType;
 
 import java.lang.annotation.ElementType;

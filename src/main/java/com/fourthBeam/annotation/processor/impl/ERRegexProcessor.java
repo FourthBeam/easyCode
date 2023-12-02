@@ -1,8 +1,11 @@
 package com.fourthBeam.annotation.processor.impl;
 
-import com.fourthBeam.annotation.processor.BO.ERRegexRule;
 import com.fourthBeam.annotation.processor.ERProcessor;
+import com.fourthBeam.annotation.processor.ERProcessorUtils;
+import com.fourthBeam.annotation.processor.enmus.EnhanceType;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,12 +14,18 @@ import java.util.regex.Pattern;
  * @author： FourthBeam
  * @create： 2023/12/2 17:05
  */
-public class ERRegexProcessor implements ERProcessor<String, ERRegexRule> {
+@Component
+public class ERRegexProcessor implements ERProcessor<String, String[]> {
 
     @Override
-    public String doProcess(String sourceStr, ERRegexRule rule) {
-        Pattern pattern = Pattern.compile(rule.getPattern());
+    public String doProcess(String sourceStr, String[] rules) {
+        Pattern pattern = Pattern.compile(rules[0]);
         Matcher matcher = pattern.matcher(sourceStr);
-        return matcher.replaceAll(rule.getReplacement());
+        return matcher.replaceAll(rules[1]);
+    }
+
+    @PostConstruct
+    private void init(){
+        ERProcessorUtils.addImplementation(EnhanceType.REGEX, this);
     }
 }
