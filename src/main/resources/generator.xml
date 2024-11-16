@@ -8,7 +8,7 @@
     <classPathEntry location="C:\Users\xxxx\AppData\Roaming\DBeaverData\drivers\maven\maven-central\com.oracle.database.jdbc\ojdbc8-12.2.0.1.jar" />
 
 
-    <!-- 一个数据库一个context -->
+    <!-- 一个数据库一个context  -->
     <context id="yihaomen_mysql_tables" targetRuntime="MyBatis3">
 
         <!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
