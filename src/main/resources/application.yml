@@ -3,14 +3,22 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://10.211.55.8:3306/myDb
-    username: root
-    password: root123
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    mysql:
+      url: jdbc:mysql://192.168.2.101:3306/myDb
+      username: root
+      password: root123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    oracle:
+      url: jdbc:oracle:thin:@192.168.2.101:1521:ORCL
+      username=: liangping
+      password: root123
+      driver-class-name: oracle.jdbc.OracleDriver
+
+
   redis:
     host: 10.211.55.8
     port: 6379
     password: root123
 
 mybatis:
-  mapper-locations: classpath:/mapper/*.xml
+  mapper-locations: classpath:/mapper/**/*.xml

@@ -7,21 +7,24 @@ import com.fourthBeam.annotation.Passed;
 import com.fourthBeam.api.BO.Employees;
 import com.fourthBeam.api.DTO.LearningRequestDTO;
 import com.fourthBeam.api.service.LearningService;
-import com.fourthBeam.mapper.EmployeesMapper;
+import com.fourthBeam.mapper.mysql.EmployeesMapper;
+import com.fourthBeam.mapper.oracle.EmployeesOracleMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
 public class Learning1Controller {
 
     private final EmployeesMapper employeesMapper;
+
+    private final EmployeesOracleMapper employeesOralceMapper;
 
     private final StringRedisTemplate stringRedisTemplate;
 
@@ -56,6 +59,36 @@ public class Learning1Controller {
     @EnhanceResponse
     public LearningRequestDTO testEnhanceResponse(@RequestBody LearningRequestDTO learningRequestDTO){
         logger.info(String.valueOf(learningRequestDTO));
+        return learningRequestDTO;
+    }
+
+    @PostMapping("/testMybatis")
+    public LearningRequestDTO testMybatis(@RequestBody LearningRequestDTO learningRequestDTO){
+        employeesMapper.testUpate("firstname1", "lastname1");
+        employeesMapper.testUpate2("firstname2", "lastname2");
+        Employees employees = new Employees();
+        employees.setFirstName("firstname3");
+        employees.setLastName("lastname3");
+        employeesMapper.testUpate3(employees);
+        Map<String, String> map = new HashMap<>();
+        map.put("firstName","firstname4");
+        map.put("lastName","lastname4");
+        employeesMapper.testUpate4(map);
+        return learningRequestDTO;
+    }
+
+    @PostMapping("/testMybatisOracle")
+    public LearningRequestDTO testMybatisOracle(@RequestBody LearningRequestDTO learningRequestDTO){
+        employeesOralceMapper.testUpate("firstname1", "lastname1");
+        employeesOralceMapper.testUpate2("firstname2", "lastname2");
+        Employees employees = new Employees();
+        employees.setFirstName("firstname3");
+        employees.setLastName("lastname3");
+        employeesOralceMapper.testUpate3(employees);
+        Map<String, String> map = new HashMap<>();
+        map.put("firstName","firstname4");
+        map.put("lastName","lastname4");
+        employeesOralceMapper.testUpate4(map);
         return learningRequestDTO;
     }
 
