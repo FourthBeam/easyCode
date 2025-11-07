@@ -1,7 +1,7 @@
-package com.fourthBeam.api.DTO;
+package com.fourthBeam.api.dto;
 
-import com.fourthBeam.annotation.EnhanceResponseField;
-import com.fourthBeam.annotation.processor.enmus.EnhanceType;
+import com.fourthBeam.features.responseenhancer.annotation.EnhanceResponseField;
+import com.fourthBeam.features.responseenhancer.processor.enums.EnhanceType;
 import lombok.Data;
 import lombok.ToString;
 

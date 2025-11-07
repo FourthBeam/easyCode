@@ -1,7 +1,7 @@
 package com.fourthBeam.api.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fourthBeam.api.DTO.LearningRequestDTO;
+import com.fourthBeam.api.dto.LearningRequestDTO;
 import com.fourthBeam.api.service.LearningService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;

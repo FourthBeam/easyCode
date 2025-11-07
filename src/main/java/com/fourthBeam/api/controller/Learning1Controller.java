@@ -2,13 +2,13 @@ package com.fourthBeam.api.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.fourthBeam.annotation.EnhanceResponse;
-import com.fourthBeam.annotation.Passed;
-import com.fourthBeam.api.BO.Employees;
-import com.fourthBeam.api.DTO.LearningRequestDTO;
+import com.fourthBeam.api.dto.LearningRequestDTO;
+import com.fourthBeam.api.model.Employees;
 import com.fourthBeam.api.service.LearningService;
-import com.fourthBeam.mapper.mysql.EmployeesMapper;
-import com.fourthBeam.mapper.oracle.EmployeesOracleMapper;
+import com.fourthBeam.features.doublewrite.mapper.mysql.EmployeesMapper;
+import com.fourthBeam.features.doublewrite.mapper.oracle.EmployeesOracleMapper;
+import com.fourthBeam.features.responseenhancer.annotation.EnhanceResponse;
+import com.fourthBeam.shared.injection.annotation.Passed;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.springframework.data.redis.core.StringRedisTemplate;

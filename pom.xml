@@ -75,6 +75,12 @@
             <version>19.8.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>10.4.0</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -112,7 +118,6 @@
         </plugins>
 
     </build>
-
 
 
 </project>
